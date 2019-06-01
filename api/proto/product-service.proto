@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+package pb;
+
+import "github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis/google/api/annotations.proto";
+import "health-check.proto";
+import "money.proto";
+
+message Product {
+    string id = 1;
+    string name = 2;
+    string description = 3;
+    Money price = 4;
+    int64 stock = 5;
+}
+
+message GetOneRequest {
+    string id = 1;
+}
+
+message GetOneResponse {
+    Product product = 1;
+}
+
+message SearchRequest {
+}
+
+message SearchResponse {
+    repeated Product products = 1;
+}
+
+service ProductService {
+
+    rpc HealthCheck (HealthCheckRequest) returns (HealthCheckResponse) {
+        option (google.api.http) = {
+            get: "/health-check"
+        };
+    }
+
+    rpc GetOne (GetOneRequest) returns (GetOneResponse) {
+        option (google.api.http) = {
+          get: "/products/{id}"
+         };
+    };
+    rpc Search (SearchRequest) returns (SearchResponse) {
+        option (google.api.http) = {
+          get: "/products"
+         };
+    };
+
+}

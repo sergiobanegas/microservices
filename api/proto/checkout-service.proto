@@ -1,0 +1,30 @@
+syntax = "proto3";
+package pb;
+
+import "github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis/google/api/annotations.proto";
+import "health-check.proto";
+
+message CheckoutRequest {
+    string card_number = 1;
+}
+
+message CheckoutResponse {
+    string transaction_id = 1;
+}
+
+service CheckoutService {
+
+    rpc HealthCheck (HealthCheckRequest) returns (HealthCheckResponse) {
+        option (google.api.http) = {
+            get: "/health-check"
+        };
+    }
+
+    rpc Checkout (CheckoutRequest) returns (CheckoutResponse) {
+        option (google.api.http) = {
+          post: "/checkout"
+          body: "*"
+         };
+    };
+
+}

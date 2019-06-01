@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package pb;
+
+message Money {
+    int64 units = 1;
+    int64 decimals = 2;
+}

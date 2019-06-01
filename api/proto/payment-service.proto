@@ -1,0 +1,20 @@
+syntax = "proto3";
+option java_multiple_files = true;
+package pb;
+
+message CreditCardInfo {
+    string card_number = 1;
+}
+
+message ExecutePaymentRequest {
+    double amount = 1;
+    string card_number = 2;
+}
+
+message ExecutePaymentResponse {
+    string transaction_id = 1;
+}
+
+service PaymentService {
+    rpc ExecutePayment (ExecutePaymentRequest) returns (ExecutePaymentResponse);
+}

@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "e3dd26e0-27cf-11e9-ab14-d663bd873d93",
+    "Name": "VX1000 filming camera",
+    "Description": "The best for filming skateboard",
+    "PriceUnits": 1000,
+    "PriceDecimals": 99,
+    "Stock": 10
+  },
+  {
+    "Id": "e3dd299c-27cf-11e9-ab14-d663bd873d93",
+    "Name": "Macbook Pro 2018",
+    "Description": "The best computer for programming",
+    "PriceUnits": 1600,
+    "PriceDecimals": 0,
+    "Stock": 100
+  },
+  {
+    "Id": "e3dd2af0-27cf-11e9-ab14-d663bd873d93",
+    "Name": "Razer Kraken 7.1 v2",
+    "Description": "Perfect for gaming",
+    "PriceUnits": 20,
+    "PriceDecimals": 0,
+    "Stock": 15
+  },
+  {
+    "Id": "e3dd2fe6-27cf-11e9-ab14-d663bd873d93",
+    "Name": "Apple Watch Series 4",
+    "Description": "The ultimate device for a healthy life",
+    "PriceUnits": 269,
+    "PriceDecimals": 99,
+    "Stock": 0
+  }
+]

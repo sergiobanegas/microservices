@@ -1,0 +1,16 @@
+server:
+  port: 8085
+grpc:
+  port: 6565
+
+spring:
+  application:
+    name: payment-service
+  cloud:
+    consul:
+      discovery:
+        tags: HTTPPort=${server.port}
+        port: ${grpc.port}
+        healthCheckUrl: http://localhost:${server.port}/actuator/health
+        service-name: payment-service
+        instance-id: payment-service

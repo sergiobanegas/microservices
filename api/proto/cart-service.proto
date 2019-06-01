@@ -1,0 +1,92 @@
+syntax = "proto3";
+package pb;
+
+import "github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis/google/api/annotations.proto";
+import "health-check.proto";
+import "product-service.proto";
+
+message CartProduct {
+    Product product = 1;
+    int64 quantity = 2;
+}
+
+message AddProductRequest {
+    string id = 1;
+    int64 quantity = 2;
+}
+
+message AddProductResponse {
+    string id = 2;
+}
+
+message GetCartRequest {
+    string id = 2;
+}
+
+message GetCartResponse {
+    repeated CartProduct products = 2;
+}
+
+message UpdateProductRequest {
+    string id = 1;
+    int64 quantity = 2;
+}
+
+message UpdateProductResponse {
+    string id = 1;
+}
+
+message DeleteProductRequest {
+    string id = 1;
+}
+
+message DeleteProductResponse {
+    string id = 1;
+}
+
+message ClearCartRequest {
+    string id = 1;
+}
+
+message ClearCartResponse {
+    string id = 1;
+}
+
+service CartService {
+
+    rpc HealthCheck (HealthCheckRequest) returns (HealthCheckResponse) {
+        option (google.api.http) = {
+            get: "/health-check"
+        };
+    }
+
+    rpc AddProduct (AddProductRequest) returns (AddProductResponse) {
+        option (google.api.http) = {
+          post: "/cart"
+          body: "*"
+         };
+    };
+    rpc GetCart (GetCartRequest) returns (GetCartResponse) {
+        option (google.api.http) = {
+          get: "/cart"
+         };
+    };
+    rpc UpdateProduct (UpdateProductRequest) returns (UpdateProductResponse) {
+        option (google.api.http) = {
+          put: "/cart"
+          body: "*"
+         };
+    };
+    rpc DeleteProduct (DeleteProductRequest) returns (DeleteProductResponse) {
+        option (google.api.http) = {
+          put: "/cart/delete"
+          body: "*"
+         };
+    };
+    rpc Clear (ClearCartRequest) returns (ClearCartResponse) {
+        option (google.api.http) = {
+          delete: "/cart"
+         };
+    };
+
+}
